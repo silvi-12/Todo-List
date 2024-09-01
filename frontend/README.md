@@ -1,8 +1,10 @@
-# React + Vite
+# Todo List
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Its a todo list made using the MERN stack with the functionalities of add, delete and edit and update status as completed or incomplete.
 
-Currently, two official plugins are available:
+## Settign up the MERN stack todo list project
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. Clone the repo
+2. Their are separate folders for frontend and backend, setup these folders
+3. Use "npm run dev" to run frontend
+4. use "npm start" to run backend

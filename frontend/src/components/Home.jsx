@@ -81,7 +81,10 @@ function Home() {
 			) : (
 				todos.map((todo, index) => (
 					<div key={index} className="task">
-						<div className="checkbox">
+						<div
+							className={`checkbox ${
+								todo.workDone ? "complete" : "incomplete"
+							}`}>
 							<div onClick={() => handleCheckbox(todo._id)}>
 								{todo.workDone ? (
 									<BsFillCheckCircleFill className="icon"></BsFillCheckCircleFill>
@@ -100,7 +103,10 @@ function Home() {
 										}
 									/>
 								) : (
-									<p className={todo.workDone ? "line_through" : ""}>
+									<p
+										className={
+											todo.workDone ? "line_through break-words" : "break-words"
+										}>
 										{todo.task}
 									</p>
 								)}
@@ -109,7 +115,7 @@ function Home() {
 						<div>
 							<span>
 								<BsPencilSquare
-									className="icon"
+									className="icon edit-icon"
 									onClick={() => handleEditClick(todo)}
 								/>
 							</span>
