@@ -14,17 +14,24 @@ function Home() {
 	const [isEditing, setIsEditing] = useState(null);
 	const [editText, setEditText] = useState("");
 
+	// Fetch tasks on component mount
 	useEffect(() => {
+		fetchTodos();
+	}, []);
+
+	const fetchTodos = () => {
 		axios
 			.get("https://todo-list-backend-5jav.onrender.com/get")
 			.then((result) => setTodos(result.data))
 			.catch((err) => console.log(err));
-	}, []);
+	};
 
 	const handleDelete = (id) => {
 		axios
 			.delete("https://todo-list-backend-5jav.onrender.com/delete/" + id)
-			.then((result) => location.reload())
+			.then(() => {
+				setTodos(todos.filter((todo) => todo._id !== id)); // Update state to remove the task
+			})
 			.catch((err) => console.log(err));
 	};
 
@@ -75,12 +82,13 @@ function Home() {
 	return (
 		<div className="home">
 			<h2>Todo List</h2>
-			<TasksCreation />
+			{/* Pass setTodos to update the list when a new task is added */}
+			<TasksCreation setTodos={setTodos} todos={todos} />
 			{todos.length === 0 ? (
 				<h2>No Records found</h2>
 			) : (
-				todos.map((todo, index) => (
-					<div key={index} className="task">
+				todos.map((todo) => (
+					<div key={todo._id} className="task">
 						<div
 							className={`checkbox ${
 								todo.workDone ? "complete" : "incomplete"
