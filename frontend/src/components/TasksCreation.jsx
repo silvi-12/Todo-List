@@ -7,7 +7,7 @@ function TasksCreation() {
 
 	const handleAddTasks = () => {
 		axios
-			.post("http://localhost:3001/add", { task: task })
+			.post("https://todo-list-backend-5jav.onrender.com/add", { task: task })
 			.then((result) => location.reload())
 			.catch((err) => console.log(err));
 	};

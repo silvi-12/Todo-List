@@ -16,14 +16,14 @@ function Home() {
 
 	useEffect(() => {
 		axios
-			.get("http://localhost:3001/get")
+			.get("https://todo-list-backend-5jav.onrender.com/get")
 			.then((result) => setTodos(result.data))
 			.catch((err) => console.log(err));
 	}, []);
 
 	const handleDelete = (id) => {
 		axios
-			.delete("http://localhost:3001/delete/" + id)
+			.delete("https://todo-list-backend-5jav.onrender.com/delete/" + id)
 			.then((result) => location.reload())
 			.catch((err) => console.log(err));
 	};
@@ -39,7 +39,7 @@ function Home() {
 
 	const handleEditSubmit = (id) => {
 		axios
-			.put(`http://localhost:3001/update/${id}`, {
+			.put(`https://todo-list-backend-5jav.onrender.com/update/${id}`, {
 				task: editText,
 				workDone: todos.find((todo) => todo._id === id).workDone,
 			})
@@ -58,7 +58,7 @@ function Home() {
 	const handleCheckbox = (id) => {
 		const todoToUpdate = todos.find((todo) => todo._id === id);
 		axios
-			.put(`http://localhost:3001/update/${id}`, {
+			.put(`https://todo-list-backend-5jav.onrender.com/update/${id}`, {
 				...todoToUpdate,
 				workDone: !todoToUpdate.workDone,
 			})

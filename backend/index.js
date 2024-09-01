@@ -8,9 +8,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect(
-	"mongodb+srv://ravidemo3:Ravi2024@todo.xvgmu.mongodb.net/?retryWrites=true&w=majority&appName=Todo"
-);
+mongoose.connect(MONGO_URI);
 
 app.get("/get", (req, res) => {
 	TodoModel.find()
